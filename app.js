@@ -12,13 +12,19 @@ const mongoStore = require('connect-mongo')(session);
 
 // connect to mongoose
 
-(async function() {
-    try {
-        await mongoose.connect(uri, { useNewUrlParser: true });
-    } catch(e) {
-        console.log(e);
-    }
+(async function () {
+  try {
+    await mongoose.connect(uri, { useNewUrlParser: true });
+  } catch (e) {
+    console.log(e);
+  }
 })();
+
+app.use(session({
+  secret: 'xyz',
+  resave: true,
+  saveUninitialized: false
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
