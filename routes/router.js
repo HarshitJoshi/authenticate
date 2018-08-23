@@ -2,17 +2,18 @@
 
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const User = require('../models/user');
 
 router.get('/', (req, res) => {
-  return res.send('hello world');
+  return res.sendFile(path.join(__dirname + '/../src/index.html'));
 });
 
 router.get('/about', (req, res) => {
   return res.send('Node authentication app');
 });
 
-router.post('/', (req, res, next) => {
+router.post('/register', (req, res, next) => {
   if (!req.body.email || !req.body.password || !req.body.username) {
     return next(new Error('all fields are required'));
   }

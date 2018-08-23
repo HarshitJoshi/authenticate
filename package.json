@@ -4,6 +4,8 @@
   "description": "simple test app for login and authentication",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Harshit Joshi",
