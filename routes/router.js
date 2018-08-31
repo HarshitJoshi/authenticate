@@ -9,11 +9,7 @@ router.get('/', (req, res) => {
   return res.sendFile(path.join(__dirname + '/../src/index.html'));
 });
 
-router.get('/about', (req, res) => {
-  return res.send('Node authentication app');
-});
-
-router.post('/register', (req, res, next) => {
+router.post('/register', async (req, res, next) => {
   if (!req.body.email || !req.body.password || !req.body.username) {
     return next(new Error('all fields are required'));
   }
@@ -22,13 +18,13 @@ router.post('/register', (req, res, next) => {
     username: req.body.username,
     password: req.body.password,
   };
-  User.create(userData, (err, user) => {
-    if (err) {
-      return next(err);
-    }
+  try {
+    const user = await User.create(userData);
     req.session.userId = user._id;
     return res.redirect('/profile');
-  });
+  } catch (e) {
+    return next(e);
+  }
 });
 
 router.get('/profile', (req, res) => {

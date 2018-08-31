@@ -30,19 +30,25 @@ userSchema.statics.authenticate = async function(params) {
     throw new Error('missing required params');
   }
   const { email, password } = params;
-  let user = await User.findOne({ email: email });
-  if (!user) {
-    throw new Error(`no user found with the corresponding email: ${email}`);
-  }
-  const encrypted_password = user.password;
+  try {
+    let user = await User.findOne({ email: email });
+    if (!user) {
+      throw new Error(`no user found with the corresponding email: ${email}`);
+    }
 
-  let verified = await bcrypt.compare(password, encrypted_password);
-  if (!verified) {
-    throw new Error('invalid password');
+    const hashed_password = user.password;
+  
+    let verified = await bcrypt.compare(password, hashed_password);
+    if (!verified) {
+      throw new Error('invalid password');
+    }
+
+    return { 
+      verify: verified
+    };
+  } catch (e) {
+    console.log(e);
   }
-  return { 
-    verify: verified
-  };
 };
 
 // Pre save addition for the database
