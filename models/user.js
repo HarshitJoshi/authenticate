@@ -12,6 +12,16 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  firstname: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  lastname: {
+    type: String,
+    required: true,
+    trim: true
+  },
   username: {
     type: String,
     required: true,
@@ -29,11 +39,11 @@ userSchema.statics.authenticate = async function(params) {
   if (!params) {
     throw new Error('missing required params');
   }
-  const { email, password } = params;
+  const { username, password } = params;
   try {
-    let user = await User.findOne({ email: email });
+    let user = await User.findOne({ username: username });
     if (!user) {
-      throw new Error(`no user found with the corresponding email: ${email}`);
+      throw new Error(`no user found with the corresponding email: ${username}`);
     }
 
     const hashed_password = user.password;
@@ -42,7 +52,6 @@ userSchema.statics.authenticate = async function(params) {
     if (!verified) {
       throw new Error('invalid password');
     }
-
     return { 
       verify: verified
     };
