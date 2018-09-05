@@ -41,9 +41,9 @@ userSchema.statics.authenticate = async function(params) {
   }
   const { username, password } = params;
   try {
-    let user = await User.findOne({ username: username });
+    let user = await User.findOne({ "username": username });
     if (!user) {
-      throw new Error(`no user found with the corresponding email: ${username}`);
+      throw new Error(`no user found with the corresponding username: ${username}`);
     }
 
     const hashed_password = user.password;

@@ -40,7 +40,7 @@ router.post('/login', async (req, res, next) => {
   }
   try {
     const login = await User.authenticate(credentials);
-    if (!user) {
+    if (!login) {
       return next(new Error('Invalid credentials'));
     }
     // TODO: send to homepage
