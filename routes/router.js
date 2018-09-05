@@ -41,8 +41,9 @@ router.post('/login', async (req, res, next) => {
   try {
     const login = await User.authenticate(credentials);
     if (!user) {
-      return next(new Error('invalid credentials'));
+      return next(new Error('Invalid credentials'));
     }
+    // TODO: send to homepage
     res.send(`Login successful: ${login.verify}`);
   } catch (e) {
     return next(e);
