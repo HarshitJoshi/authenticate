@@ -50,7 +50,6 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-
 router.get('/profile', async (req, res) => {
   try {
     const user = await User.findById(req.session.userId);
