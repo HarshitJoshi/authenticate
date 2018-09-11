@@ -1,0 +1,80 @@
+.topNav {
+    height: 75px;
+    width: 100%;
+}
+.logo {
+    float: left;
+}
+.socialIcons {
+    float: right;
+}
+.buttonContainer {
+    position: relative;
+    display: table;
+    margin:auto;
+    padding-top: 15%;
+}
+.button {
+   position: relative;
+   width: 400px;
+   height: 400px;
+   border-radius: 50%;
+   border: 2px solid;
+   border-color: rgba(129, 236, 255, 0.671); 
+   text-align: center;
+   display: table-cell;
+   vertical-align: middle;
+   background-color: rgba(129, 236, 255, 0.884)  
+}
+input::placeholder {
+    text-align: center;
+}
+h1 {
+    margin: 10px 10px;
+
+}
+.inputDesignUserName {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border: 2px solid;
+    border-color: rgba(129, 236, 255, 0.671);
+    border-radius: 50%;
+    text-align: center;
+    right:37%;
+    bottom: 66%;
+}
+.inputDesignUserPass {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border: 2px solid;
+    border-color: rgba(129, 236, 255, 0.671);
+    border-radius: 50%;
+    text-align: center;
+    right: 37%;
+    bottom: 36%;
+}
+.inputDesign:focus {
+    outline: none;
+}
+.keyIn {
+   position: absolute;
+   height: 100px;
+   width: 100px;
+   border: 2px solid;
+   border-color: rgba(129, 236, 255, 0.671);
+   border-radius: 50%;
+   text-align: center;
+   background-color: white;
+   top: 68%;
+   right:37%;
+   cursor: pointer;
+}
+.textAlignCenter {
+    position: absolute;
+    top: 41%;
+    left: 33%;
+    font: 400 13.3333px Arial;
+    cursor: pointer;
+}
