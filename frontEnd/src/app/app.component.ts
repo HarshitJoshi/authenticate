@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {SubmitButton} from './SubmitButton.component';
 
 @Component({
   selector: 'app-root',
