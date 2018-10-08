@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/register', async (req, res, next) => {
+  console.log(req.body);
   if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.username) {
     return next(new Error('all fields are required'));
   }

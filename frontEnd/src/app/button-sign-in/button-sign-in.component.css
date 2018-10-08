@@ -68,3 +68,6 @@ h1 {
   font: 400 13.3333px Arial;
   cursor: pointer;
 }
+.noKey {
+  position: absolute;
+}

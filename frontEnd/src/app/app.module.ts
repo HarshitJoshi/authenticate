@@ -11,6 +11,7 @@ import { NewUserFormComponent } from './new-user-form/new-user-form.component';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { TopNavComponent } from './top-nav/top-nav.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { TopNavComponent } from './top-nav/top-nav.component';
       {path: 'key-in', component: ButtonSignIn},
       {path: 'register', component: NewUserFormComponent},
       /*{path: '**', component: OopsComponent}*/
-    ]), BrowserAnimationsModule, MatInputModule, FormsModule
+    ]), BrowserAnimationsModule, MatInputModule, FormsModule, MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
