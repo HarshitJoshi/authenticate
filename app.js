@@ -2,6 +2,7 @@
 'use strict';
 
 const express = require('express');
+const logger = require('./logger');
 const app = express();
 const routes = require('./routes/router');
 const bodyParser = require('body-parser');
@@ -32,5 +33,5 @@ app.use(routes);
 
 const port = process.env.port || 3000;
 app.listen(port, () => {
-  console.log(`Running on port ${port}...`);
+  logger.info(`Running on port ${port}...`);
 });
