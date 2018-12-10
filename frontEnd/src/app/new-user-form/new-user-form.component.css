@@ -1,0 +1,13 @@
+.innerContainer {
+  width: 20%;
+  min-height: 50%;
+  text-align: center;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+button {
+  margin-top: 15px;
+}

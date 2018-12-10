@@ -1,0 +1,22 @@
+<div class='innerContainer'>
+  <mat-form-field>
+    <input matInput [(ngModel)]="model.firstname" firstname="firstname" placeholder="first name" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="model.lastname" placeholder="last name" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="model.email" placeholder="preferred email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="model.username" placeholder="insert a username">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="model.password" placeholder="insert a passkey" required>
+  </mat-form-field>
+  <button mat-stroked-button (click)='register()'>register</button>
+</div>

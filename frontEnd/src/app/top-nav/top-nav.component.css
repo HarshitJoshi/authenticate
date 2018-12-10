@@ -1,0 +1,10 @@
+.topNav {
+  height: 75px;
+  width: 100%;
+}
+.logo {
+  float: left;
+}
+.socialIcons {
+  float: right;
+}
