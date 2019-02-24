@@ -4,20 +4,18 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const User = require('../models/user');
+const Token = require('../models/token');
 
 router.get('/', (req, res) => {
   return res.sendFile(path.join(__dirname + '/../src/index.html'));
 });
 
 router.post('/register', async (req, res, next) => {
-  console.log(req.body);
-  if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.username) {
+  if (!req.body.email || !req.body.password || !req.body.username) {
     return next(new Error('all fields are required'));
   }
   const userData = {
     email: req.body.email,
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
     username: req.body.username,
     password: req.body.password,
   };
@@ -40,12 +38,13 @@ router.post('/login', async (req, res, next) => {
     password: req.body.password
   }
   try {
-    const login = await User.authenticate(credentials);
-    if (!login) {
+    const user = await User.authenticate(credentials);
+    if (!user) {
       return next(new Error('Invalid credentials'));
     }
     // TODO: send to homepage
-    res.send(`Login successful: ${login.verify}`);
+    console.log(`Login successful: ${user.verify}`);
+    res.send({ token: generateToken(user.user), user: user.user.toJSON());
   } catch (e) {
     return next(e);
   }

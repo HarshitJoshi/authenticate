@@ -14,12 +14,12 @@ const userSchema = new mongoose.Schema({
   },
   firstname: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   lastname: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   username: {
@@ -47,12 +47,13 @@ userSchema.statics.authenticate = async function(params) {
     }
 
     const hashed_password = user.password;
-  
+
     let verified = await bcrypt.compare(password, hashed_password);
     if (!verified) {
       throw new Error('invalid password');
     }
-    return { 
+    return {
+      user,
       verify: verified
     };
   } catch (e) {
